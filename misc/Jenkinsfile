@@ -12,7 +12,7 @@ node {
      }
    }
    stage('docker build/push') {
-       docker.withRegistry('https://index.docker.io/v2/', 'dockerhub-creds') {
+       docker.withRegistry('', 'dockerhub-creds') {
        def app = docker.build("maplekiyo36110/docker-nodejs-demo:${commit_id}", '.')
        sh "docker push maplekiyo36110/docker-nodejs-demo:${commit_id}"
      }
