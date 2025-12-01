@@ -13,8 +13,8 @@ node {
    }
    stage('docker build/push') {
        docker.withRegistry('', 'dockerhub-creds') {
-       def app = docker.build("maplekiyo36110/docker-nodejs-demo:${commit_id}", '.')
-       sh "docker push maplekiyo36110/docker-nodejs-demo:${commit_id}"
+       def app = docker.build("maplekiyo36110/docker-nodejs-demo:${commit_id}", '.').push()
+       //sh "docker push maplekiyo36110/docker-nodejs-demo:${commit_id}"
      }
    }
 }
