@@ -12,8 +12,9 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry([credentialsId: 'dockerhub-creds', url: 'https://index.docker.io/v2/']) {
-       def app = docker.build("maplekiyo36110/docker-nodejs-demo:${commit_id}", '.').push()
+     docker.withDockerRegistry(credentialsId: 'dockerhub-creds', url: 'https://index.docker.io/v2/') {
+       def app = docker.build("maplekiyo36110/docker-nodejs-demo:${commit_id}", '.')
+       app.push()
      }
    }
 }
